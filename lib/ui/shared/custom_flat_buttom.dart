@@ -20,7 +20,7 @@ class CustomFlatButtom extends StatelessWidget {
         padding: const EdgeInsets.all(15.0),
         child: Text(
           text,
-          style: const TextStyle(fontSize: 25),
+          style: const TextStyle(fontSize: 20),
         ),
       ),
     );
