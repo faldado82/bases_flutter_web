@@ -1,19 +1,24 @@
+import 'package:bases_flutter_web/providers/counter_provider.dart';
 import 'package:bases_flutter_web/ui/shared/custom_app_menu.dart';
 import 'package:bases_flutter_web/ui/shared/custom_flat_buttom.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class CounterProviderPage extends StatefulWidget {
+class CounterProviderPage extends StatelessWidget {
   const CounterProviderPage({super.key});
 
   @override
-  State<CounterProviderPage> createState() => _CounterProviderPageState();
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+        create: (_) => CounterProvider(), child: _CounterProviderPageBody());
+  }
 }
 
-class _CounterProviderPageState extends State<CounterProviderPage> {
-  int counter = 100;
-
+class _CounterProviderPageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final counterProvider = Provider.of<CounterProvider>(context);
+
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -31,7 +36,7 @@ class _CounterProviderPageState extends State<CounterProviderPage> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                'Contador: $counter',
+                'Contador: ${counterProvider.counter}',
                 style:
                     const TextStyle(fontSize: 80, fontWeight: FontWeight.bold),
               ),
@@ -43,11 +48,11 @@ class _CounterProviderPageState extends State<CounterProviderPage> {
               CustomFlatButtom(
                   text: 'Incrementar',
                   color: Colors.green,
-                  onPressed: () => setState(() => counter++)),
+                  onPressed: () => counterProvider.increment()),
               CustomFlatButtom(
                   text: 'Decrementar',
                   color: Colors.red,
-                  onPressed: () => setState(() => counter--)),
+                  onPressed: () => counterProvider.decrement()),
             ],
           ),
           const Spacer(),
