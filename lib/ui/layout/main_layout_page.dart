@@ -2,18 +2,22 @@ import 'package:bases_flutter_web/ui/shared/custom_app_menu.dart';
 import 'package:flutter/material.dart';
 
 class MainLayoutPage extends StatelessWidget {
-  const MainLayoutPage({super.key});
+  final Widget child;
+
+  const MainLayoutPage({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
         body: Center(
       child: Column(
         children: [
-          CustomAppMenu(),
-          Spacer(),
+          const CustomAppMenu(),
+          const Spacer(),
           //Todo: view
-          Spacer(),
+          Expanded(child: child),
+
+          const Spacer(),
         ],
       ),
     ));

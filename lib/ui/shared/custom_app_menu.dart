@@ -1,3 +1,4 @@
+import 'package:bases_flutter_web/services/navigation_service.dart';
 import 'package:bases_flutter_web/ui/shared/custom_flat_buttom.dart';
 import 'package:flutter/material.dart';
 
@@ -15,19 +16,25 @@ class CustomAppMenu extends StatelessWidget {
         children: [
           CustomFlatButtom(
             text: 'Contador Stateful',
-            onPressed: () => Navigator.pushNamed(context, '/stateful'),
+            // Debido al servicio utilizado, debemos implementar el uso del navigationService
+            // para la correcta navegacion entre rutas.
+            //onPressed: () => Navigator.pushNamed(context, '/stateful'),
+            onPressed: () => navigationService.navigateTo('/stateful'),
             color: Colors.black,
           ),
           const SizedBox(width: 20),
           CustomFlatButtom(
             text: 'Contador Provider',
-            onPressed: () => Navigator.pushNamed(context, '/provider'),
+            //onPressed: () => Navigator.pushNamed(context, '/provider'),
+            onPressed: () => navigationService.navigateTo('/provider'),
             color: Colors.black,
           ),
           const SizedBox(width: 20),
           CustomFlatButtom(
             text: 'Otra Pagina',
-            onPressed: () => Navigator.pushNamed(context, '/otraPagina'),
+            // Esta pagina no existe es para mostrar error 404
+            // onPressed: () => Navigator.pushNamed(context, '/otraPagina'),
+            onPressed: () => navigationService.navigateTo('/otraPagina'),
             color: Colors.black,
           )
         ],
