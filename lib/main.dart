@@ -1,4 +1,4 @@
-import 'package:bases_flutter_web/router/route_generator.dart';
+import 'package:bases_flutter_web/router/router.dart';
 import 'package:bases_flutter_web/services/navigation_service.dart';
 import 'package:bases_flutter_web/ui/layout/main_layout_page.dart';
 import 'package:bases_flutter_web/ui/locator.dart';
@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 void main() {
   setupLocator();
+  Flurorouter.configureRoutes();
   runApp(const MyApp());
 }
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Rutas',
-        initialRoute: '/stateful',
+        initialRoute: '/',
 
         // Como forma de aprendizaje se utilizaron "routes" definidas
         // las cuales tenian integrada la navegacion y se redibujaban innecesariamente
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
         //   '/error404': (_) => const Page404(),
         // },
 
-        onGenerateRoute: RouteGenerator.generateRoute,
+        //onGenerateRoute: RouteGenerator.generateRoute,
+        onGenerateRoute: Flurorouter.router.generator,
         navigatorKey: locator<NavigationService>().navigatorKey,
         builder: (_, child) {
           return MainLayoutPage(child: child!);

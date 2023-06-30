@@ -11,7 +11,11 @@ class View404 extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-            'Error 404 - Page not found',
+            'Error 404',
+            style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+          ),
+          const Text(
+            'Page not found',
             style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
           ),
           CustomFlatButtom(

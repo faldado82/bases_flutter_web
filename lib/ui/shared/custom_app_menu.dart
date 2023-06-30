@@ -10,7 +10,7 @@ class CustomAppMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
-        return (constraints.maxWidth > 630)
+        return (constraints.maxWidth > 900)
             ? _TabletDesktopMenu()
             : _MobileMenu();
       },
@@ -36,7 +36,6 @@ class _TabletDesktopMenu extends StatelessWidget {
                 locator<NavigationService>().navigateTo('/stateful'),
             color: Colors.black,
           ),
-          const SizedBox(width: 20),
           CustomFlatButtom(
             text: 'Contador Provider',
             //onPressed: () => Navigator.pushNamed(context, '/provider'),
@@ -44,13 +43,28 @@ class _TabletDesktopMenu extends StatelessWidget {
                 locator<NavigationService>().navigateTo('/provider'),
             color: Colors.black,
           ),
-          const SizedBox(width: 20),
           CustomFlatButtom(
             text: 'Otra Pagina',
             // Esta pagina no existe es para mostrar error 404
             // onPressed: () => Navigator.pushNamed(context, '/otraPagina'),
             onPressed: () =>
                 locator<NavigationService>().navigateTo('/otraPagina'),
+            color: Colors.black,
+          ),
+          CustomFlatButtom(
+            text: 'Stateful 100',
+            // Esta pagina no existe es para mostrar error 404
+            // onPressed: () => Navigator.pushNamed(context, '/otraPagina'),
+            onPressed: () =>
+                locator<NavigationService>().navigateTo('/stateful/100'),
+            color: Colors.black,
+          ),
+          CustomFlatButtom(
+            text: 'Provider 500',
+            // Esta pagina no existe es para mostrar error 404
+            // onPressed: () => Navigator.pushNamed(context, '/otraPagina'),
+            onPressed: () =>
+                locator<NavigationService>().navigateTo('/provider?q=500'),
             color: Colors.black,
           )
         ],
@@ -92,6 +106,22 @@ class _MobileMenu extends StatelessWidget {
             // onPressed: () => Navigator.pushNamed(context, '/otraPagina'),
             onPressed: () =>
                 locator<NavigationService>().navigateTo('/otraPagina'),
+            color: Colors.black,
+          ),
+          CustomFlatButtom(
+            text: 'Stateful 100',
+            // Esta pagina no existe es para mostrar error 404
+            // onPressed: () => Navigator.pushNamed(context, '/otraPagina'),
+            onPressed: () =>
+                locator<NavigationService>().navigateTo('/stateful/100'),
+            color: Colors.black,
+          ),
+          CustomFlatButtom(
+            text: 'Provider 500',
+            // Esta pagina no existe es para mostrar error 404
+            // onPressed: () => Navigator.pushNamed(context, '/otraPagina'),
+            onPressed: () =>
+                locator<NavigationService>().navigateTo('/provider?q=500'),
             color: Colors.black,
           )
         ],
