@@ -1,9 +1,13 @@
 import 'package:bases_flutter_web/router/route_generator.dart';
 import 'package:bases_flutter_web/services/navigation_service.dart';
 import 'package:bases_flutter_web/ui/layout/main_layout_page.dart';
+import 'package:bases_flutter_web/ui/locator.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  setupLocator();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -26,7 +30,7 @@ class MyApp extends StatelessWidget {
         // },
 
         onGenerateRoute: RouteGenerator.generateRoute,
-        navigatorKey: navigationService.navigatorKey,
+        navigatorKey: locator<NavigationService>().navigatorKey,
         builder: (_, child) {
           return MainLayoutPage(child: child!);
         });
