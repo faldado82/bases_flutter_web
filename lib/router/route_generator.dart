@@ -4,6 +4,10 @@ import 'package:bases_flutter_web/ui/views/view_404.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
+// esta clase ya no se usa, 
+// se implemento router en su lugar
+// como forma de aprendizaje.
+// se dejo como referencia
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
